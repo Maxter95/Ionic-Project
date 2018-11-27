@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title>
+          Cloud Firestore
+
+      </ion-title>
+      <ion-item>
+          <button ion-button color="primary" (click)="addDocument()">
+                      Add
+                </button>
+          <button ion-button color="secondary" (click)="filter()">
+              Filter by City
+          </button>
+          <button ion-button color="secondary" (click)="retrieveCollection()">
+              All records
+          </button>
+          <ion-badge item-end>{{counter}}</ion-badge>
+      </ion-item>
+      <ion-item>
+          <ion-input placeholder="Filter" [(ngModel)]="city"></ion-input>
+      </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+
+  <ion-list>
+      <ion-item-sliding *ngFor="let location of locations">
+           <ion-item>
+          <h2>{{ location.city }} - Population: {{ location.population }} - Established: {{ location.established }}
+          </h2>
+        </ion-item>
+          <ion-item-options side="left">
+            <button ion-button (click)="updateDocument(location)">update</button>
+            <button ion-button color="danger" (click)="deleteDocument(location)">delete</button>
+          </ion-item-options>
+        
+
+      </ion-item-sliding >
+
+     
+  </ion-list>
+<ion-list>
+  <ion-item *ngFor="let location1 of locations1">
+
+      <h2>{{ location1.city }} - Population: {{ location1.population }} - Established: {{ location1.established }}
+      </h2>
+      <button ion-button color="secondary" (click)="updateDocument(location)">
+           Update this record
+      </button>
+
+      <button ion-button color="danger" (click)="deleteDocument(location)">
+           Delete this record
+      </button>
+
+  </ion-item>
+</ion-list>
+</ion-content>

@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title> StageApp  </ion-title>
+        <ion-buttons end>
+     <button ion-button icon-only (click)="addDocument()">
+       <ion-icon name ="add"></ion-icon>
+     </button>
+   </ion-buttons>
+        <ion-item>
+            <button ion-button color="secondary" (click)="filterAirport()">
+              <ion-icon name="jet"></ion-icon>
+            </button>
+            <button ion-button color="secondary" (click)="filterDate()">
+                Filter by trainee
+            </button>
+            <button ion-button color="secondary" (click)="retrieveCollection()">
+                All Trainees
+            </button>
+            <ion-badge item-end>{{counter}}</ion-badge>
+        </ion-item>
+        <ion-item>
+
+            <ion-input placeholder="Filter" [(ngModel)]="Airport"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="Date" placeholder="Filter par date" [(ngModel)]="d"></ion-input>
+            <ion-input type="Date" placeholder="Filter par date" [(ngModel)]="d1"></ion-input>
+        </ion-item>
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let location of locations">
+            <ion-item>
+            <ion-grid>
+
+            <ion-row>
+            <ion-col  col-5>
+            <h2>{{location.Name}} {{location.Surname }}
+            </h2>
+            </ion-col>
+
+
+
+
+
+                        <ion-col col-5>
+            <ion-badge item-end style=" background: brown; color: brown;" >h</ion-badge>
+        </ion-col>
+        </ion-row>
+
+        </ion-grid>
+        </ion-item>
+        <ion-item-options side="right">
+            <button ion-button color="secondary" (click)="updateDocument(location)">update</button>
+            <button ion-button color="danger" (click)="deleteDocument(location)">delete</button>
+          </ion-item-options>
+        </ion-item-sliding >
+
+    </ion-list>
+
+
+
+</ion-content>

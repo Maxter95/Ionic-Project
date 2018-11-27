@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            {{ title }}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="form" (ngSubmit)="saveDocument(form.value)">
+
+        <ion-item>
+            <ion-label stacked>Name:</ion-label>
+            <ion-input type="text" formControlName="Name" [(ngModel)]="Name"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label stacked>Surname:</ion-label>
+            <ion-input type="text" formControlName="Surname" [(ngModel)]="Surname"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Birth:</ion-label>
+            <ion-input type="Date" formControlName="Birth" [(ngModel)]="Birth"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>ID:</ion-label>
+            <ion-input type="number" formControlName="ID" [(ngModel)]="ID"></ion-input>
+        </ion-item>
+        
+
+        <ion-item>
+            <ion-label stacked>University</ion-label>
+            <ion-select [(ngModel)]="University" formControlName="University">
+                <ion-option *ngFor="let a of locations" [value]="a.university">{{a.university}}</ion-option>
+              <ion-option><ion-input type="text" formControlName="University" [(ngModel)]="University"></ion-input></ion-option>
+            </ion-select>
+            
+          </ion-item>
+
+         
+        <ion-item>
+            <ion-label stacked>Class:</ion-label>
+            <ion-input type="text" formControlName="Class" [(ngModel)]="Class"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Airport:</ion-label>
+            <ion-select [(ngModel)]="Airport" formControlName="Airport">
+                <ion-option  [value]="Monastir">Monastir Habib Bourguiba Airport</ion-option>
+                <ion-option  [value]="nfidha">Enfidha-Hammamet Airport</ion-option>
+              </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>StartDate:</ion-label>
+            <ion-input type="Date" formControlName="StartDate" [(ngModel)]="StartDate"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label stacked>EndDate:</ion-label>
+            <ion-input type="Date" formControlName="EndDate" [(ngModel)]="EndDate"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+            <ion-label stacked>RequestDate:</ion-label>
+            <ion-input type="Date" formControlName="RequestDate" [(ngModel)]="RequestDate"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>AssignmentDate:</ion-label>
+            <ion-input type="Date" formControlName="AssignmentDate" [(ngModel)]="AssignmentDate"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Training Certification:</ion-label>
+            <ion-select [(ngModel)]="TrainingCertification" formControlName="TrainingCertification">
+                <ion-option  [value]="yes">Yes</ion-option>
+                <ion-option  [value]="no">No</ion-option>
+              </ion-select>
+        </ion-item>
+
+
+       <ion-item>
+            <button ion-button block color="primary" text-center padding-top padding-bottom [disabled]="!form.valid">
+              <div *ngIf="!isEditable">
+                  Add a new document
+              </div>
+              <div *ngIf="isEditable">
+                  Update this document
+              </div>
+           </button>
+        </ion-item>
+
+    </form>
+
+</ion-content>
